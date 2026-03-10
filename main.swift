@@ -301,15 +301,31 @@ class SystemMonitor: ObservableObject {
     }
     
     private func fetchUptime() {
-        let uptimeInSeconds = ProcessInfo.processInfo.systemUptime
-        let days = Int(uptimeInSeconds) / 86400
-        let hours = (Int(uptimeInSeconds) % 86400) / 3600
-        let minutes = (Int(uptimeInSeconds) % 3600) / 60
-        var uptimeString = "Uptime: "
-        if days > 0 { uptimeString += "\(days)d " }
-        uptimeString += "\(hours)h \(minutes)m"
-        DispatchQueue.main.async { self.uptime = uptimeString }
+    let task = Process()
+    let pipe = Pipe()
+
+    task.standardOutput = pipe
+    task.standardError = Pipe()
+    task.arguments = ["-c", "uptime | awk '{print $3,$4,$5}' | sed 's/,//g'"]
+    task.executableURL = URL(fileURLWithPath: "/bin/zsh")
+    task.standardInput = nil
+
+    do {
+        try task.run()
+
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        if let output = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines) {
+            DispatchQueue.main.async {
+                self.uptime = "Uptime: \(output)"
+            }
+        }
+    } catch {
+        DispatchQueue.main.async {
+            self.uptime = "Uptime: Error"
+        }
     }
+}
+
     
     private func fetchRealCPU() {
         var cpuInfo: processor_info_array_t?
