@@ -44,4 +44,4 @@ You can build and run SysMeter directly from your terminal without opening Xcode
    \`\`\`
 
 ## Customization
-Click the SysMeter icon in your menu bar, then click the **gear icon** to open the settings view. Your preferences are saved automatically using standard macOS `UserDefaults`.
+Click the SysMeter icon in your menu bar, then click the **gear icon** to open the settings view. Your preferences are saved automatically using standard macOS `UserDefaults`.# sysMeter
