@@ -13,35 +13,41 @@ SysMeter is a lightweight, native macOS menu bar application written purely in S
 * macOS 13.0 (Ventura) or later
 * Swift 5.7+ (Included with Xcode Command Line Tools)
 
+## Preview
+![alt text](image.png)
+
+## Customization 
+![alt text](image-1.png)
+
 ## Installation & Setup
 
 You can build and run SysMeter directly from your terminal without opening Xcode.
 
 1. **Clone the repository:**
-   \`\`\`bash
-   git clone https://github.com/yourusername/SysMeter.git
-   cd SysMeter
-   \`\`\`
+   ```bash
+   git clone https://github.com/BogdanAlinTudorache/sysMeter.git
+   cd sysMeter
+   ```
 
 2. **Make the build script executable (first time only):**
-   \`\`\`bash
+   ```bash
    chmod +x build.sh
-   \`\`\`
+   ```
 
 3. **Build the app:**
-   \`\`\`bash
+   ```bash
    ./build.sh
-   \`\`\`
+   ```
 
 4. **Run it directly:**
-   \`\`\`bash
+   ```bash
    open build/SysMeter.app
-   \`\`\`
+   ```
 
 5. **(Optional) Install to your Applications folder:**
-   \`\`\`bash
+   ```bash
    cp -r build/SysMeter.app /Applications/
-   \`\`\`
+   ```
 
 ## Customization
-Click the SysMeter icon in your menu bar, then click the **gear icon** to open the settings view. Your preferences are saved automatically using standard macOS `UserDefaults`.# sysMeter
+Click the SysMeter icon in your menu bar, then click the **gear icon** to open the settings view. Your preferences are saved automatically using standard macOS `UserDefaults`.
