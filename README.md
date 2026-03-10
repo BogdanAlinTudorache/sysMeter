@@ -15,6 +15,8 @@ SysMeter is a lightweight, native macOS menu bar application written purely in S
 
 ## Preview 
 ![alt text](preview.png)
+
+### Expanded view
 ![alt text](expanded.png)
 
 ## Customization 
