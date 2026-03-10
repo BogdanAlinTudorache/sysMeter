@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Build Output
+build/
+SysMeter.app/
+
+# Xcode (Just in case you ever move to it)
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+DerivedData/
+
+# Swift Package Manager
+.build/
+Package.resolved
