@@ -13,11 +13,12 @@ SysMeter is a lightweight, native macOS menu bar application written purely in S
 * macOS 13.0 (Ventura) or later
 * Swift 5.7+ (Included with Xcode Command Line Tools)
 
-## Preview
-![alt text](image.png)
+## Preview 
+![alt text](preview.png)
+![alt text](expanded.png)
 
 ## Customization 
-![alt text](image-1.png)
+![alt text](customization.png)
 
 ## Installation & Setup
 
