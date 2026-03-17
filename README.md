@@ -1,13 +1,16 @@
-# SysMeter 📊
+# sysMeter — Real-time System Monitoring
 
-SysMeter is a lightweight, native macOS menu bar application written purely in Swift. Inspired by minimalist tools like Pomodori, SysMeter lives entirely in your Mac's status bar (with no dock icon!) and provides real-time, low-level insights into your system's resource usage.
+sysMeter is a lightweight, native macOS menu bar application for real-time system resource monitoring. Written in SwiftUI, it combines low-level Mach kernel APIs with modern glassmorphism design to provide instant CPU, memory, and disk insights without ever touching your dock.
 
 ## Features
-* **Dual Menu Bar View**: View CPU load and RAM percentage side-by-side, or toggle them individually.
-* **Low-Level Accuracy**: Utilizes macOS Mach kernel APIs (`host_processor_info` and `host_statistics64`) for true real-time hardware data.
-* **Activity Monitor Layout**: Click the menu bar icon for a detailed, familiar breakdown of Physical Memory, App Memory, Wired Memory, and Swap.
-* **Customizable Refresh Rate**: Choose between 1, 2, or 5-second polling intervals.
-* **No Xcode Required**: Builds entirely from the terminal using a custom shell script.
+* **Real-time Monitoring**: CPU load, RAM usage, and disk space with 1-5 second refresh intervals
+* **Glassmorphism UI**: Modern frosted glass design with Tokyo Night color theme support
+* **Low-Level Accuracy**: Direct Mach kernel APIs (`host_processor_info`, `host_statistics64`) for true hardware metrics
+* **Detailed Memory Breakdown**: Physical, app, wired, compressed, and swap memory at a glance
+* **Theme Support**: System, light, and dark modes with optional Tokyo Night preset
+* **Tab Navigation**: Clean Monitor and Settings views with persistent tab bar
+* **Auto-Updates**: Built-in check for updates via GitHub Releases
+* **Terminal-only Build**: No Xcode needed — compile and install entirely from shell
 
 ## Requirements
 * macOS 13.0 (Ventura) or later
@@ -24,12 +27,12 @@ SysMeter is a lightweight, native macOS menu bar application written purely in S
 
 ## Installation & Setup
 
-You can build and run SysMeter directly from your terminal without opening Xcode.
+Build and install sysMeter directly from your terminal — no Xcode required.
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/BogdanAlinTudorache/sysMeter.git
-   cd sysMeter
+   cd sysMeter/sysMeter
    ```
 
 2. **Make the build script executable (first time only):**
@@ -37,20 +40,45 @@ You can build and run SysMeter directly from your terminal without opening Xcode
    chmod +x build.sh
    ```
 
-3. **Build the app:**
+3. **Build, install, and launch:**
    ```bash
    ./build.sh
    ```
 
-4. **Run it directly:**
-   ```bash
-   open build/SysMeter.app
-   ```
+   The script automatically:
+   - Compiles Swift source
+   - Creates the app bundle
+   - Installs to `/Applications/sysMeter.app`
+   - Launches the app
 
-5. **(Optional) Install to your Applications folder:**
-   ```bash
-   cp -r build/SysMeter.app /Applications/
-   ```
+## Usage
+
+Click the sysMeter icon in your menu bar to open the monitoring window:
+
+- **Monitor View**: Real-time CPU, memory, and disk metrics with color-coded thresholds
+- **Settings**: Customize display toggles, refresh rate, theme, and color preset
+- **Tab Navigation**: Switch between Monitor and Settings tabs at the top
+- **Auto-save**: All preferences stored in macOS `UserDefaults` and persist across restarts
 
 ## Customization
-Click the SysMeter icon in your menu bar, then click the **gear icon** to open the settings view. Your preferences are saved automatically using standard macOS `UserDefaults`.
+
+Open Settings (gear icon in tab bar) to:
+- Toggle CPU, RAM, and disk display in menu bar and dropdown
+- Set refresh rate (1s, 2s, or 5s)
+- Choose theme: System, Light, or Dark
+- Select color preset: Default or Tokyo Night
+
+## Updates
+
+sysMeter has built-in update checking. In the Settings view, click "Check for Updates" to see if a newer version is available on GitHub Releases. Updates are semantic versioned (MAJOR.MINOR.PATCH).
+
+## Architecture
+
+- **Single-file design**: All SwiftUI code in `main.swift`
+- **No dependencies**: Pure Swift with only macOS frameworks
+- **Efficient polling**: Low-overhead Mach kernel calls (1-5 second intervals)
+- **Local-only**: All data computed locally — nothing sent to external services
+
+## License
+
+This project is open source and available under the MIT License.
